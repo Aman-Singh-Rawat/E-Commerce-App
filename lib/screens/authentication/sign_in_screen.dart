@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/widgets/email_pass_text_form_field.dart';
+import 'package:shoesy/widgets/auth_input_fields.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -11,6 +11,8 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +33,10 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
             const SizedBox(height: 40),
-            const EmailPassTextFormField(isEmail: true),
-            const SizedBox(height: 20),
-            const EmailPassTextFormField(isEmail: false),
+            AuthInputFields(
+              emailController: _emailController,
+              passwordController: _passwordController,
+            ),
           ],
         ),
       ),
