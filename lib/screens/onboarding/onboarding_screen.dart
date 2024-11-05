@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/screens/authentication/sign_in_screen.dart';
+import 'package:shoesy/widgets/custom_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -84,6 +84,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           PageView.builder(
@@ -146,25 +150,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       bottom: 12,
                     ),
                     width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF101010),
-                        elevation: 8,
-                      ),
-                      onPressed: () {
-                        openNextScreen();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: Text(
-                          _currentPage < 2 ? "Next" : "Get Started",
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
+                    child: CustomButton(
+                      onPressedCallback: openNextScreen,
+                      btnText: _currentPage < 2 ? "Next" : "Get Started",
+                      btnColor: const Color(0xFF101010),
+                      btnElevation: 8,
                     ),
                   )
                 ],

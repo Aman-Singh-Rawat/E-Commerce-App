@@ -24,7 +24,7 @@ class _AuthInputFieldsState extends State<AuthInputFields> {
   final TextStyle _textStyle = GoogleFonts.poppins(
     fontSize: 14,
     color: const Color(0xFF101010),
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
   );
 
   final _decoration = InputDecoration(
@@ -36,7 +36,7 @@ class _AuthInputFieldsState extends State<AuthInputFields> {
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         color: Color(0xFF101010),
-        width: 1,
+        width: 1.5,
       ),
     ),
     border: OutlineInputBorder(
@@ -90,7 +90,7 @@ class _AuthInputFieldsState extends State<AuthInputFields> {
           focusNode: _emailFocusNode,
           style: _textStyle,
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         TextFormField(
           controller: widget.passwordController,
           obscureText: _passwordVisible,
