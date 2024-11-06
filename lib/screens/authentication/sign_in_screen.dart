@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/widgets/auth_input_fields.dart';
 import 'package:shoesy/widgets/custom_button.dart';
+import 'package:shoesy/widgets/social_button_bg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -159,74 +160,18 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          width: 2,
-                          color: const Color(0xFFF5F5F5),
-                        ),
-                      ),
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              "assets/images/ic_google.svg",
-                              width: 24,
-                              height: 24,
-                            ),
-                            const SizedBox(width: 12),
-                            Text(
-                              "Google",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    child: SocialButtonBg(
+                      onCallback: () {},
+                      socialBtnImage: "assets/images/ic_google.svg",
+                      socialBtnName: "Google",
                     ),
                   ),
                   const SizedBox(width: 20),
                   Expanded(
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            width: 2,
-                            color: const Color(0xFFF5F5F5),
-                          )),
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              "assets/images/ic_facebook.svg",
-                              width: 24,
-                              height: 24,
-                            ),
-                            const SizedBox(width: 12),
-                            Text(
-                              "Facebook",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    child: SocialButtonBg(
+                      onCallback: () {},
+                      socialBtnImage: "assets/images/ic_facebook.svg",
+                      socialBtnName: "Facebook",
                     ),
                   ),
                 ],
