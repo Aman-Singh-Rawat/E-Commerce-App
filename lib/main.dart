@@ -7,7 +7,7 @@ void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignInScreen(),
+      home: SocialLoginScreen(),
     ),
   );
 }

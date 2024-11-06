@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SocialButtonBg extends StatelessWidget {
-  SocialButtonBg({
+class SocialCustomButton extends StatelessWidget {
+  SocialCustomButton({
     super.key,
     required this.onCallback,
     required this.socialBtnImage,
@@ -36,13 +36,17 @@ class SocialButtonBg extends StatelessWidget {
               width: 24,
               height: 24,
             ),
-            const SizedBox(width: 12),
-            Text(
-              socialBtnName,
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF101010),
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
+            const SizedBox(width: 20),
+            SizedBox(
+              width: (MediaQuery.of(context).size.width/2), // TODO FIX THIS DESIGN ISSUE
+              child: Text(
+                textAlign: TextAlign.start,
+                socialBtnName,
+                style: GoogleFonts.poppins(
+                  color: const Color(0xFF101010),
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],

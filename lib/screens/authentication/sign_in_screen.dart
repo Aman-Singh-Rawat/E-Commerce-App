@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/widgets/auth_input_fields.dart';
 import 'package:shoesy/widgets/custom_button.dart';
@@ -160,7 +159,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: SocialButtonBg(
+                    child: SocialCustomButton(
                       onCallback: () {},
                       socialBtnImage: "assets/images/ic_google.svg",
                       socialBtnName: "Google",
@@ -168,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(width: 20),
                   Expanded(
-                    child: SocialButtonBg(
+                    child: SocialCustomButton(
                       onCallback: () {},
                       socialBtnImage: "assets/images/ic_facebook.svg",
                       socialBtnName: "Facebook",
