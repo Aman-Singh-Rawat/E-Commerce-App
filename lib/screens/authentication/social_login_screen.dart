@@ -1,13 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/screens/authentication/sign_in_screen.dart';
 import 'package:shoesy/widgets/social_button_bg.dart';
 
 import '../../widgets/custom_button.dart';
 
 class SocialLoginScreen extends StatelessWidget {
   const SocialLoginScreen({super.key});
+
+  void openSignInScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SignInScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +92,9 @@ class SocialLoginScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CustomButton(
-                  onPressedCallback: () {},
+                  onPressedCallback: () {
+                    openSignInScreen(context);
+                  },
                   btnText: "Sign in with password",
                   btnColor: const Color(0xFF101010),
                   btnElevation: 8,

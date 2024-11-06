@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -154,26 +153,34 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: SocialCustomButton(
-                      onCallback: () {},
-                      socialBtnImage: "assets/images/ic_google.svg",
-                      socialBtnName: "Google",
+              const SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: SocialCustomButton(
+                        onCallback: () {},
+                        socialBtnImage: "assets/images/ic_google.svg",
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 20),
-                  Expanded(
-                    child: SocialCustomButton(
-                      onCallback: () {},
-                      socialBtnImage: "assets/images/ic_facebook.svg",
-                      socialBtnName: "Facebook",
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: SocialCustomButton(
+                        onCallback: () {},
+                        socialBtnImage: "assets/images/ic_facebook.svg",
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: SocialCustomButton(
+                        onCallback: () {},
+                        socialBtnImage: "assets/images/ic_apple.svg",
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 50),
               RichText(
