@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/screens/authentication/sign_in_screen.dart';
-import 'package:shoesy/widgets/social_button_bg.dart';
+import 'package:shoesy/widgets/social_custom_button.dart';
 
 import '../../widgets/custom_button.dart';
 
