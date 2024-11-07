@@ -28,7 +28,7 @@ class _AuthInputFieldsState extends State<AuthInputFields> {
   );
 
   final _decoration = InputDecoration(
-    contentPadding: EdgeInsets.symmetric(vertical: 20),
+    contentPadding: const EdgeInsets.symmetric(vertical: 20),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide.none,
