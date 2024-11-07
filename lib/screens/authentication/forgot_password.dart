@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/screens/authentication/sign_in_screen.dart';
 import 'package:shoesy/widgets/custom_button.dart';
+
+import '../../widgets/forgot_password_type.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -11,7 +13,34 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  bool flag = true;
+  bool _flag = true;
+
+  final BoxDecoration _selectedDecoration = BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(25)),
+    border: Border.all(
+      color: const Color(0xFF101010),
+      width: 2,
+    ),
+  );
+
+  final BoxDecoration _unSelectedDecoration = BoxDecoration(
+    borderRadius: const BorderRadius.all(Radius.circular(25)),
+    border: Border.all(
+      color: const Color(0xFFF5F5F5),
+      width: 1,
+    ),
+  );
+
+  void navigateOtpScreen() {
+    if (_flag) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SignInScreen(),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,144 +73,47 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               "Select which contact details should we use to reset your password",
               style: GoogleFonts.poppins(
                 color: const Color(0xFF101010),
-                fontWeight: FontWeight.w500,
                 fontSize: 15,
               ),
             ),
             const SizedBox(height: 25),
             Container(
-              decoration: flag
-                  ? BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(
-                        color: const Color(0xFF101010),
-                        width: 2,
-                      ),
-                    )
-                  : BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(18)),
-                      border: Border.all(
-                        color: const Color(0xFFF5F5F5),
-                        width: 1,
-                      ),
-                    ),
+              decoration: _flag ? _selectedDecoration : _unSelectedDecoration,
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    if (!flag) {
-                      flag = !flag;
+                    if (!_flag) {
+                      _flag = !_flag;
                     }
                   });
                 },
                 borderRadius: const BorderRadius.all(
                   Radius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 38,
-                        backgroundColor: const Color(0xFFECECEC),
-                        child: Image.asset(
-                          "assets/images/img_message.png",
-                          width: 24,
-                          height: 24,
-                          color: const Color(0xFF101010),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "via SMS:",
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            "+91 761*****67",
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: const Color(0xFF101010),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                child: const ForgotPasswordType(
+                  imagePath: "assets/images/img_message.png",
+                  passwordTypeTextVia: "via SMS:",
+                  passwordTypeVia: "+91 761*****67",
                 ),
               ),
             ),
             const SizedBox(height: 20),
             Container(
-              decoration: !flag
-                  ? BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(
-                        color: const Color(0xFF101010),
-                        width: 2,
-                      ),
-                    )
-                  : BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(18)),
-                      border: Border.all(
-                        color: const Color(0xFFF5F5F5),
-                        width: 1,
-                      ),
-                    ),
+              decoration: !_flag ? _selectedDecoration : _unSelectedDecoration,
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    if (flag) {
-                      flag = !flag;
+                    if (_flag) {
+                      _flag = !_flag;
                     }
                   });
                 },
                 borderRadius: const BorderRadius.all(
                   Radius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 38,
-                        backgroundColor: Color(0xFFECECEC),
-                        child: Icon(
-                          Icons.email_rounded,
-                          size: 24,
-                          color: Color(0xFF101010),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "via SMS:",
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            "ama****t@gmail.com",
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: const Color(0xFF101010),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                child: const ForgotPasswordType(
+                  passwordTypeTextVia: "via Email:",
+                  passwordTypeVia: "ama****t@gmail.com",
                 ),
               ),
             ),
@@ -190,14 +122,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               width: double.infinity,
               child: Expanded(
                 child: CustomButton(
-                  onPressedCallback: () {},
+                  onPressedCallback: navigateOtpScreen,
                   btnText: "Continue",
                   btnColor: const Color(0xFF101010),
                   btnElevation: 8,
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 24),
           ],
         ),
       ),
