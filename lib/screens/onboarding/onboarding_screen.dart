@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/screens/authentication/sign_in_screen.dart';
 import 'package:shoesy/screens/authentication/social_login_screen.dart';
 import 'package:shoesy/widgets/custom_button.dart';
 
