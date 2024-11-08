@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/screens/onboarding/onboarding_screen.dart';
+
+import 'onboarding_screen.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

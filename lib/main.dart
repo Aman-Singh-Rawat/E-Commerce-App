@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:shoesy/screens/authentication/forgot_password.dart';
+import 'package:shoesy/ui/screens/shared/bottom_navbar.dart';
+import 'package:shoesy/ui/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ForgotPassword(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "/bottomNavBar": (context) => const BottomNavBar(),
+      },
     ),
   );
 }

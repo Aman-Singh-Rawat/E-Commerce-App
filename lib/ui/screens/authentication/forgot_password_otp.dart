@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../widgets/custom_button.dart';
+import '../../../widgets/custom_button.dart';
+import 'forgot_password_dialog.dart';
 
 class ForgotPasswordOtp extends StatefulWidget {
   const ForgotPasswordOtp({super.key});
@@ -15,36 +13,50 @@ class ForgotPasswordOtp extends StatefulWidget {
 
 class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
   final List<FocusNode> _focusNode = List.generate(4, (index) => FocusNode());
-  final List<TextEditingController> _controllers = List.generate(4, (index) => TextEditingController());
+  final List<TextEditingController> _controllers =
+      List.generate(4, (index) => TextEditingController());
   Color _btnColor = const Color(0xFF393939);
   double _btnElevation = 0;
+  bool _flag = false;
 
   @override
   void dispose() {
-    for(int index = 0; index < _focusNode.length; index++) {
+    for (int index = 0; index < _focusNode.length; index++) {
       _focusNode[index].dispose();
       _controllers[index].dispose();
     }
     super.dispose();
   }
 
+  void _openCongratulationsDialog() {
+    if (_flag) {
+      showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => const ForgotPasswordDialog(),
+      );
+    }
+  }
+
   void _focusFunctionality(String value, int index) {
     if (value.length == 1) {
-      if(index < 3) {
-        FocusScope.of(context).requestFocus(_focusNode[index+1]);
+      if (index < 3) {
+        FocusScope.of(context).requestFocus(_focusNode[index + 1]);
       } else {
         _focusNode[index].unfocus();
         setState(() {
+          _flag = true;
           _btnElevation = 8;
           _btnColor = const Color(0xFF101010);
         });
       }
-    } else if(value.isEmpty && index > 0) {
+    } else if (value.isEmpty && index > 0) {
       setState(() {
+        _flag = false;
         _btnElevation = 0;
         _btnColor = const Color(0xFF393939);
       });
-      FocusScope.of(context).requestFocus(_focusNode[index-1]);
+      FocusScope.of(context).requestFocus(_focusNode[index - 1]);
     }
   }
 
@@ -99,14 +111,14 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
                               decoration: InputDecoration(
                                 filled: true,
                                 focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 1.5),
+                                  borderSide: BorderSide(width: 2),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(10),
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(width: 0.04),
+                                  borderSide: const BorderSide(width: 0.1),
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -131,7 +143,7 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
               SizedBox(
                 width: double.infinity,
                 child: CustomButton(
-                  onPressedCallback: () {},
+                  onPressedCallback: _openCongratulationsDialog,
                   btnText: "Continue",
                   btnColor: _btnColor,
                   btnElevation: _btnElevation,

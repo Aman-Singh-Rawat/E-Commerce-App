@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/screens/authentication/forgot_password.dart';
 import 'package:shoesy/widgets/auth_input_fields.dart';
 import 'package:shoesy/widgets/custom_button.dart';
 import 'package:shoesy/widgets/social_custom_button.dart';
@@ -47,6 +48,15 @@ class _SignInScreenState extends State<SignInScreen> {
       _btnElevation = 8;
       return const Color(0xFF101010);
     }
+  }
+
+  void navigateToForgotPasswordScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ForgotPassword(),
+      ),
+    );
   }
 
   @override
@@ -115,7 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               const SizedBox(height: 20),
               InkWell(
-                onTap: () {},
+                onTap: navigateToForgotPasswordScreen,
                 child: Text(
                   "Forgot the password?",
                   style: GoogleFonts.poppins(

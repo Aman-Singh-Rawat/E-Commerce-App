@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/screens/authentication/forgot_password_otp.dart';
 import 'package:shoesy/widgets/custom_button.dart';
 
-import '../../widgets/forgot_password_type.dart';
+import '../../../widgets/forgot_password_type.dart';
+import 'forgot_password_otp.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
