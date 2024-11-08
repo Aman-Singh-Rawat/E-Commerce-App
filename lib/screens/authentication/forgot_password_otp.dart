@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +12,28 @@ class ForgotPasswordOtp extends StatefulWidget {
 }
 
 class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
-  //TODO DESIGN MORE PRACTICAL USER FRIENDLY
+  final List<FocusNode> _focusNode = List.generate(4, (index) => FocusNode());
+
+  @override
+  void dispose() {
+    for(var focusNode in _focusNode) {
+      focusNode.dispose();
+    }
+    super.dispose();
+  }
+
+  void _focusFunctionality(String value, int index) {
+    if (value.length == 1) {
+      if(index < 3) {
+        FocusScope.of(context).requestFocus(_focusNode[index+1]);
+      } else {
+        _focusNode[index].unfocus();
+      }
+    } else if(value.isEmpty && index > 0) {
+      FocusScope.of(context).requestFocus(_focusNode[index-1]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +76,9 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
                             height: 55,
                             width: 78,
                             child: TextFormField(
+                              focusNode: _focusNode[index],
                               onChanged: (value) {
-                                if (value.length == 1) {
-                                  FocusScope.of(context).nextFocus();
-                                }
+                                _focusFunctionality(value, index);
                               },
                               decoration: InputDecoration(
                                 filled: true,
