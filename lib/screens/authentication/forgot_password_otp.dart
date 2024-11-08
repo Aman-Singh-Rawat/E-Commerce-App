@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,11 +15,15 @@ class ForgotPasswordOtp extends StatefulWidget {
 
 class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
   final List<FocusNode> _focusNode = List.generate(4, (index) => FocusNode());
+  final List<TextEditingController> _controllers = List.generate(4, (index) => TextEditingController());
+  Color _btnColor = const Color(0xFF393939);
+  double _btnElevation = 0;
 
   @override
   void dispose() {
-    for(var focusNode in _focusNode) {
-      focusNode.dispose();
+    for(int index = 0; index < _focusNode.length; index++) {
+      _focusNode[index].dispose();
+      _controllers[index].dispose();
     }
     super.dispose();
   }
@@ -28,8 +34,16 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
         FocusScope.of(context).requestFocus(_focusNode[index+1]);
       } else {
         _focusNode[index].unfocus();
+        setState(() {
+          _btnElevation = 8;
+          _btnColor = const Color(0xFF101010);
+        });
       }
     } else if(value.isEmpty && index > 0) {
+      setState(() {
+        _btnElevation = 0;
+        _btnColor = const Color(0xFF393939);
+      });
       FocusScope.of(context).requestFocus(_focusNode[index-1]);
     }
   }
@@ -76,6 +90,8 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
                             height: 55,
                             width: 78,
                             child: TextFormField(
+                              controller: _controllers[index],
+                              cursorColor: const Color(0xFF101010),
                               focusNode: _focusNode[index],
                               onChanged: (value) {
                                 _focusFunctionality(value, index);
@@ -117,8 +133,8 @@ class _ForgotPasswordOtpState extends State<ForgotPasswordOtp> {
                 child: CustomButton(
                   onPressedCallback: () {},
                   btnText: "Continue",
-                  btnColor: const Color(0xFF101010),
-                  btnElevation: 8,
+                  btnColor: _btnColor,
+                  btnElevation: _btnElevation,
                 ),
               ),
               const SizedBox(height: 24),
