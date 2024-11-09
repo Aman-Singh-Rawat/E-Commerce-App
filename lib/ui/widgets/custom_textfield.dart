@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
   );
 
   final TextStyle _textStyle = GoogleFonts.poppins(
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     color: const Color(0xFF101010),
   );
@@ -51,6 +51,7 @@ class CustomTextField extends StatelessWidget {
                 keyboardType: inputType!,
                 decoration: _decoration,
                 controller: controller,
+                initialCountryCode: "IN",
                 cursorColor: const Color(0xFF101010),
               )
             : TextFormField(
