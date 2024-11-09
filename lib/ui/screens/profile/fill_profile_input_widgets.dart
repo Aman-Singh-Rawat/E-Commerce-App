@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/screens/authentication/forgot_password_dialog.dart';
 
 import '../../../utils/converters.dart';
 import '../../../utils/fill_profile_property.dart';
@@ -27,51 +28,40 @@ class _FillProfileInputWidgets extends State<FillProfileInputWidgets> {
   void _showGenderDialog() {
     showDialog(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            "Select Gender",
-            style: GoogleFonts.poppins(
-              color: const Color(0xFF101010),
-              fontWeight: FontWeight.w500,
-            ),
+      builder: (context) => AlertDialog(
+        title: Text(
+          "Select Gender",
+          style: GoogleFonts.poppins(
+            color: const Color(0xFF101010),
+            fontWeight: FontWeight.w500,
           ),
-          shadowColor: const Color(0xFF101010),
-          actionsAlignment: MainAxisAlignment.start,
-          actions: [
-            RadioListTile(
-              title: Text(
-                "Male",
-                style: _textStyle,
-              ),
-              activeColor: const Color(0xFF101010),
-              value: "Male",
-              groupValue: _selectedGender,
-              onChanged: _changeGender,
-            ),
-            RadioListTile(
-              title: Text(
-                "Female",
-                style: _textStyle,
-              ),
-              activeColor: const Color(0xFF101010),
-              value: "Female",
-              groupValue: _selectedGender,
-              onChanged: _changeGender,
-            ),
-            RadioListTile(
-              title: Text(
-                "Others",
-                style: _textStyle,
-              ),
-              activeColor: const Color(0xFF101010),
-              value: "Others",
-              groupValue: _selectedGender,
-              onChanged: _changeGender,
-            )
-          ],
-        );
-      },
+        ),
+        shadowColor: const Color(0xFF101010),
+        actionsAlignment: MainAxisAlignment.start,
+        actions: [
+          RadioListTile(
+            title: Text("Male", style: _textStyle),
+            activeColor: const Color(0xFF101010),
+            value: "Male",
+            groupValue: _selectedGender,
+            onChanged: _changeGender,
+          ),
+          RadioListTile(
+            title: Text("Female", style: _textStyle),
+            activeColor: const Color(0xFF101010),
+            value: "Female",
+            groupValue: _selectedGender,
+            onChanged: _changeGender,
+          ),
+          RadioListTile(
+            title: Text("Others", style: _textStyle),
+            activeColor: const Color(0xFF101010),
+            value: "Others",
+            groupValue: _selectedGender,
+            onChanged: _changeGender,
+          )
+        ],
+      ),
     );
   }
 
@@ -117,9 +107,7 @@ class _FillProfileInputWidgets extends State<FillProfileInputWidgets> {
           hintText: "Date of Birth",
           controller: controllers[ProfileEnum.dateOfBirth]!,
           isEnabled: true,
-          onClicked: () {
-            _selectDate(context);
-          },
+          onClicked: () => _selectDate(context),
           inputType: TextInputType.datetime,
           suffixIcon: Icons.calendar_month,
         ),
@@ -146,7 +134,7 @@ class _FillProfileInputWidgets extends State<FillProfileInputWidgets> {
           padding: const EdgeInsets.only(top: 80),
           width: double.infinity,
           child: CustomButton(
-            onPressedCallback: () {},
+            onPressedCallback: _navigateToCongratulationDialog,
             btnText: "Continue",
             btnColor: _isBtnEnabled
                 ? const Color(0xFF101010)
@@ -170,22 +158,32 @@ class _FillProfileInputWidgets extends State<FillProfileInputWidgets> {
     });
   }
 
+  void _navigateToCongratulationDialog() {
+    if (_isBtnEnabled) {
+      showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => const ForgotPasswordDialog(),
+      );
+    }
+  }
+
   /* lifecycle methods */
   @override
   void initState() {
     super.initState();
-    controllers.forEach((key, controller) {
-      controller.addListener(_checkIfAllFieldsFilled);
-    });
+    controllers.forEach(
+      (key, controller) => controller.addListener(_checkIfAllFieldsFilled),
+    );
   }
 
   @override
   void dispose() {
     super.dispose();
-    controllers.forEach((key, controller) {
-      controller.addListener(() {
-        setState(() {});
-      });
-    });
+    controllers.forEach(
+      (key, controller) => controller.addListener(
+        () => setState(() {}),
+      ),
+    );
   }
 }

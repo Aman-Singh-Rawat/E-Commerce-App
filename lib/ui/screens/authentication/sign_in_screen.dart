@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/authentication/forgot_password.dart';
+import 'package:shoesy/ui/screens/profile/fill_profile.dart';
 
 import '../../widgets/auth_input_fields.dart';
 import '../../widgets/custom_button.dart';
@@ -118,7 +119,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(
                 width: double.infinity,
                 child: CustomButton(
-                  onPressedCallback: () {},
+                  onPressedCallback: _navigateToFillProfile,
                   btnText: "Sign in",
                   btnColor: btnColor,
                   btnElevation: _btnElevation,
@@ -223,6 +224,15 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _navigateToFillProfile() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const FillProfile(),
       ),
     );
   }
