@@ -9,6 +9,14 @@ import 'package:shoesy/widgets/custom_textfield.dart';
 class FillProfile extends StatelessWidget {
   const FillProfile({super.key});
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      firstDate: DateTime(1947),
+      lastDate: DateTime(2024),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,22 +83,34 @@ class FillProfile extends StatelessWidget {
                 hintText: "Full Name",
                 inputType: TextInputType.name,
               ),
-              const SizedBox(height: 15),
               const CustomTextField(
                 hintText: "Nickname",
                 inputType: TextInputType.name,
               ),
-              const SizedBox(height: 15),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Date of Birth",
+                isEnabled: true,
+                onClicked: () {
+                  print("Hey bro.!!");
+                  //_selectDate(context);
+                },
                 inputType: TextInputType.datetime,
                 suffixIcon: Icons.calendar_month,
               ),
-              const SizedBox(height: 15),
               const CustomTextField(
                 hintText: "Email",
                 inputType: TextInputType.emailAddress,
                 suffixIcon: Icons.email_outlined,
+              ),
+              const CustomTextField(
+                hintText: "Phone Number",
+                inputType: TextInputType.datetime,
+              ),
+              const CustomTextField(
+                hintText: "Gender",
+                isEnabled: true,
+                inputType: TextInputType.emailAddress,
+                suffixIcon: Icons.arrow_drop_down_rounded,
               ),
             ],
           ),
