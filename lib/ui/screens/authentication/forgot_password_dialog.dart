@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../shared/bottom_navbar.dart';
 
 class ForgotPasswordDialog extends StatelessWidget {
   const ForgotPasswordDialog({super.key});

@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/widgets/custom_textfield.dart';
 
@@ -12,6 +8,7 @@ class FillProfile extends StatelessWidget {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
+      initialDate: DateTime(2004, 7, 12),
       firstDate: DateTime(1947),
       lastDate: DateTime(2024),
     );
@@ -79,11 +76,11 @@ class FillProfile extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Full Name",
                 inputType: TextInputType.name,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Nickname",
                 inputType: TextInputType.name,
               ),
@@ -91,22 +88,21 @@ class FillProfile extends StatelessWidget {
                 hintText: "Date of Birth",
                 isEnabled: true,
                 onClicked: () {
-                  print("Hey bro.!!");
-                  //_selectDate(context);
+                  _selectDate(context);
                 },
                 inputType: TextInputType.datetime,
                 suffixIcon: Icons.calendar_month,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Email",
                 inputType: TextInputType.emailAddress,
                 suffixIcon: Icons.email_outlined,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Phone Number",
                 inputType: TextInputType.datetime,
               ),
-              const CustomTextField(
+              CustomTextField(
                 hintText: "Gender",
                 isEnabled: true,
                 inputType: TextInputType.emailAddress,
