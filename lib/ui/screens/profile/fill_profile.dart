@@ -1,9 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/widgets/custom_textfield.dart';
 
-class FillProfile extends StatelessWidget {
+import '../../widgets/custom_textfield.dart';
+
+class FillProfile extends StatefulWidget {
   const FillProfile({super.key});
+
+  @override
+  State<FillProfile> createState() => _FillProfileState();
+}
+
+class _FillProfileState extends State<FillProfile> {
+  /*late final TextEditingController _fullNameController;
+  late final TextEditingController _nicknameController;
+  late final TextEditingController _dateOfBirthController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneNumberController;
+  late final TextEditingController _genderController;*/
+
+  final List<TextEditingController> _controllers = [
+    TextEditingController(),  // 0 -> full name
+    TextEditingController(),  // 1 -> nickname
+    TextEditingController(), // 2 -> D.O.B
+    TextEditingController(),  // 3 -> Email
+    TextEditingController(), // 4 -> PhoneNumber
+    TextEditingController(), // 5 -> Gender
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    for (var controller in _controllers) {
+      controller.addListener(() {
+        setState(() {});
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -12,6 +52,8 @@ class FillProfile extends StatelessWidget {
       firstDate: DateTime(1947),
       lastDate: DateTime(2024),
     );
+
+
   }
 
   @override
@@ -78,14 +120,17 @@ class FillProfile extends StatelessWidget {
               const SizedBox(height: 24),
               CustomTextField(
                 hintText: "Full Name",
+                controller: _controllers[0],
                 inputType: TextInputType.name,
               ),
               CustomTextField(
                 hintText: "Nickname",
+                controller: _controllers[1],
                 inputType: TextInputType.name,
               ),
               CustomTextField(
                 hintText: "Date of Birth",
+                controller: _controllers[2],
                 isEnabled: true,
                 onClicked: () {
                   _selectDate(context);
@@ -95,16 +140,19 @@ class FillProfile extends StatelessWidget {
               ),
               CustomTextField(
                 hintText: "Email",
+                controller: _controllers[3],
                 inputType: TextInputType.emailAddress,
                 suffixIcon: Icons.email_outlined,
               ),
               CustomTextField(
                 hintText: "Phone Number",
+                controller: _controllers[4],
                 inputType: TextInputType.datetime,
               ),
               CustomTextField(
                 hintText: "Gender",
                 isEnabled: true,
+                controller: _controllers[5],
                 inputType: TextInputType.emailAddress,
                 suffixIcon: Icons.arrow_drop_down_rounded,
               ),

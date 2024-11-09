@@ -2,8 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/authentication/sign_in_screen.dart';
-import 'package:shoesy/widgets/social_custom_button.dart';
-import '../../../widgets/custom_button.dart';
+
+import '../../widgets/custom_button.dart';
+import '../../widgets/social_custom_button.dart';
 
 class SocialLoginScreen extends StatelessWidget {
   const SocialLoginScreen({super.key});

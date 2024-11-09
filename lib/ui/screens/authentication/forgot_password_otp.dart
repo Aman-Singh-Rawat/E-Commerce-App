@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../widgets/custom_button.dart';
+import '../../widgets/custom_button.dart';
 import 'forgot_password_dialog.dart';
 
 class ForgotPasswordOtp extends StatefulWidget {

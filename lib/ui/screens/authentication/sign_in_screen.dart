@@ -2,9 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/authentication/forgot_password.dart';
-import 'package:shoesy/widgets/auth_input_fields.dart';
-import 'package:shoesy/widgets/custom_button.dart';
-import 'package:shoesy/widgets/social_custom_button.dart';
+
+import '../../widgets/auth_input_fields.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/social_custom_button.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});

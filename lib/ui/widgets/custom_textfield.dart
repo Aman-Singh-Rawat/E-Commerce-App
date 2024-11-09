@@ -3,18 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField(
-      {super.key,
-      required this.hintText,
-      this.suffixIcon,
-      this.inputType,
-      this.isEnabled,
-      this.onClicked});
+  CustomTextField({
+    super.key,
+    required this.hintText,
+    required this.controller,
+    this.suffixIcon,
+    this.inputType,
+    this.isEnabled,
+    this.onClicked,
+  });
 
   final String hintText;
   final IconData? suffixIcon;
   final TextInputType? inputType;
   final bool? isEnabled;
+  final TextEditingController controller;
   final VoidCallback? onClicked;
 
   final InputDecoration _decoration = InputDecoration(
@@ -47,9 +50,11 @@ class CustomTextField extends StatelessWidget {
                 style: _textStyle,
                 keyboardType: inputType!,
                 decoration: _decoration,
+                controller: controller,
                 cursorColor: const Color(0xFF101010),
               )
             : TextFormField(
+                controller: controller,
                 style: _textStyle,
                 onTap: onClicked,
                 readOnly: isEnabled ?? false,
