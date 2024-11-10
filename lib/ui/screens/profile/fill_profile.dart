@@ -1,13 +1,8 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/profile/fill_profile_input_widgets.dart';
-import 'package:shoesy/ui/widgets/custom_button.dart';
-import 'package:shoesy/utils/converters.dart';
-import 'package:shoesy/utils/profile_enum.dart';
 
-import '../../widgets/custom_textfield.dart';
 
 class FillProfile extends StatefulWidget {
   const FillProfile({super.key});
