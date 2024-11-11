@@ -6,3 +6,12 @@ enum ProfileEnum {
   phoneNumber,
   gender,
 }
+
+enum Offers {
+  offerDiscount,
+  offerImage,
+  offerTitle,
+  offerSubtitle,
+}
+
+
