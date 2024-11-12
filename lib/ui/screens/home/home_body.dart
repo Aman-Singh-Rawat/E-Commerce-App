@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/utils/converters.dart';
@@ -7,14 +6,39 @@ import 'package:shoesy/utils/fill_profile_property.dart';
 
 import '../../../utils/profile_enum.dart';
 
-class HomeBody extends StatelessWidget {
-  HomeBody({super.key});
+class HomeBody extends StatefulWidget {
+  const HomeBody({super.key});
+
+  @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  int _currentPage = 0;
+
+  AnimatedContainer _buildDots({int? index}) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(50),
+        ),
+        color: _currentPage == index
+            ? const Color(0xFF101010)
+            : Colors.grey.withAlpha(90),
+      ),
+      margin: const EdgeInsets.only(right: 6),
+      height: 7,
+      curve: Curves.easeIn,
+      width: _currentPage == index ? 30 : 7,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(
           children: [
             TextFormField(
@@ -59,53 +83,92 @@ class HomeBody extends StatelessWidget {
             CarouselSlider(
               items: offersList.map(
                 (offer) {
-                  return Container(
-                    color: Colors.grey,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  offer[Offers.offerDiscount] ?? '',
-                                  style: GoogleFonts.poppins(
-                                    color: const Color(0xFF101010),
-                                    fontSize: 34,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                  return Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE7E7E7),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      offer[Offers.offerDiscount] ?? '',
+                                      style: GoogleFonts.roboto(
+                                        color: const Color(0xFF101010),
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      offer[Offers.offerTitle] ?? '',
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xFF101010),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      offer[Offers.offerSubtitle] ?? '',
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xFF101010),
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  offer[Offers.offerTitle] ?? '',
-                                  style: GoogleFonts.poppins(
-                                    color: const Color(0xFF101010),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  offer[Offers.offerImage]!,
+                                  fit: BoxFit.cover,
                                 ),
-                                Text(
-                                  offer[Offers.offerSubtitle] ?? '',
-                                  style: GoogleFonts.poppins(
-                                    color: const Color(0xFF101010),
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              4,
+                              (listIndex) => _buildDots(index: listIndex),
                             ),
                           ),
                         ),
-                        Expanded(child: Image.asset(offer[Offers.offerImage]!,fit: BoxFit.cover,))
-                      ],
-                    ),
+                      )
+                    ],
                   );
                 },
               ).toList(),
               options: CarouselOptions(
                 height: 200,
                 autoPlay: true,
-                onPageChanged: (index, reason) {},
+                onPageChanged: (index, reason) => setState(() {
+                  _currentPage = index;
+                }),
                 viewportFraction: 1.0,
               ),
             )

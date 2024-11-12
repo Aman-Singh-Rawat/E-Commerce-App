@@ -13,7 +13,7 @@ final Map<ProfileEnum, TextEditingController> controllers = {
 List<Map<Offers, String>> offersList = [
   {
     Offers.offerDiscount: "30%",
-    Offers.offerImage: "assets/images/img_offer_girl.jpeg",
+    Offers.offerImage: "assets/images/img_offer_girl.png",
     Offers.offerTitle: "Today Special!",
     Offers.offerSubtitle: "Get discount for every order, only valid for today"
   },
@@ -27,14 +27,14 @@ List<Map<Offers, String>> offersList = [
 
   {
     Offers.offerDiscount: "40%",
-    Offers.offerImage: "assets/images/img_m1_smart_watch.jpg",
+    Offers.offerImage: "assets/images/img_iphone.png",
     Offers.offerTitle: "New Arrivals",
     Offers.offerSubtitle: "Get discount for every order, only valid for today"
   },
 
   {
     Offers.offerDiscount: "20%",
-    Offers.offerImage: "assets/images/img_offer_shoe.jpeg",
+    Offers.offerImage: "assets/images/img_offer_shoe.png",
     Offers.offerTitle: "Black Friday",
     Offers.offerSubtitle: "Get discount for every order, only valid for today"
   }

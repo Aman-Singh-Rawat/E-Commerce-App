@@ -5,6 +5,6 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("cart screen");
+    return const Text("cart screen");
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/home/home_body.dart';
@@ -61,7 +60,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: HomeBody(),
+      body: const HomeBody(),
     );
   }
 }

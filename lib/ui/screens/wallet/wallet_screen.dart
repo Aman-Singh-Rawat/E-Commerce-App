@@ -5,6 +5,6 @@ class WalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("profilescreen");
+    return const Text("profilescreen");
   }
 }
