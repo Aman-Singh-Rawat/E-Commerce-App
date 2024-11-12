@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoesy/ui/widgets/home_offer.dart';
+import 'package:shoesy/ui/widgets/product_items.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
 import 'package:shoesy/ui/widgets/section_header.dart';
 
@@ -11,7 +12,6 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,21 +23,29 @@ class _HomeBodyState extends State<HomeBody> {
               children: [
                 const SearchView(),
                 const SizedBox(height: 20),
-                SectionHeader(sectionTitle: "Special Offers", onTextClicked: () {}),
+                SectionHeader(
+                  sectionTitle: "Special Offers",
+                  onTextClicked: () {},
+                ),
                 const SizedBox(height: 20),
               ],
             ),
           ),
           const HomeOffer(),
           const SizedBox(height: 20),
+          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            height: 192,
+            child: const ProductItems(),
+          ),
           Padding(
             padding: const EdgeInsets.all(14),
-            child: Column(
-              children: [
-                SectionHeader(sectionTitle: "Most Popular", onTextClicked: () {}),
-              ],
+            child: SectionHeader(
+              sectionTitle: "Most Popular",
+              onTextClicked: () {},
             ),
-          )
+          ),
         ],
       ),
     );

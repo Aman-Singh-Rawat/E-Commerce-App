@@ -39,3 +39,46 @@ List<Map<Offers, String>> offersList = [
     Offers.offerSubtitle: "Get discount for every order, only valid for today"
   }
 ];
+
+
+List<Map<Products, Object>> productMap = [
+  {
+    Products.clothes: "Clothes",
+    Products.clotheImage: "assets/images/img_clothes.png"
+  },
+
+  {
+    Products.clothes: "Shoes",
+    Products.clotheImage: "assets/images/img_shoes.png"
+  },
+
+  {
+    Products.clothes: "Bags",
+    Products.clotheImage: "assets/images/img_bags.png"
+  },
+
+  {
+    Products.clothes: "Electronics",
+    Products.clotheImage: "assets/images/img_electronics.png"
+  },
+
+  {
+    Products.clothes: "Watch",
+    Products.clotheImage: "assets/images/img_watch.png"
+  },
+
+  {
+    Products.clothes: "Jewelry",
+    Products.clotheImage: "assets/images/img_jewelry.png"
+  },
+
+  {
+    Products.clothes: "Kitchen",
+    Products.clotheImage: "assets/images/img_kitchen.png"
+  },
+
+  {
+    Products.clothes: "Toys",
+    Products.clotheImage: "assets/images/img_toys.png"
+  }
+];

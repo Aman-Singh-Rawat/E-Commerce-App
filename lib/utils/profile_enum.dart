@@ -14,4 +14,21 @@ enum Offers {
   offerSubtitle,
 }
 
-
+enum Products {
+  clothes,
+  clotheImage,
+  shoes,
+  shoeImage,
+  bags,
+  bagImage,
+  electronics,
+  electronicImage,
+  watch,
+  watchImage,
+  jewelry,
+  jewelryImage,
+  kitchen,
+  kitchenImage,
+  toys,
+  toyImage,
+}
