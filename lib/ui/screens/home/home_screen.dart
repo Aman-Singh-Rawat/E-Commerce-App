@@ -29,8 +29,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "$getGreeting 👋",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.montserrat(
                       color: const Color(0xFF101010),
+                      fontWeight: FontWeight.w500,
                       fontSize: 15,
                     ),
                   ),
@@ -39,9 +40,9 @@ class HomeScreen extends StatelessWidget {
                     "Andrew Ainsley",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.montserrat(
                       color: const Color(0xFF101010),
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                       fontSize: 17,
                     ),
                   ),
