@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shoesy/ui/widgets/home_offer.dart';
-import 'package:shoesy/ui/widgets/product_items.dart';
+import 'package:shoesy/ui/widgets/product_items_type.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
 import 'package:shoesy/ui/widgets/section_header.dart';
 
 import '../../widgets/product_category.dart';
+import '../../widgets/product_item.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -52,6 +53,8 @@ class _HomeBodyState extends State<HomeBody> {
             height: 40,
             child: ProductCategory(),
           ),
+          const SizedBox(height: 12),
+          ProductItem(),
         ],
       ),
     );

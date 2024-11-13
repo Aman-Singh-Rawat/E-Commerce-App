@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/cart/cart_screen.dart';
 import 'package:shoesy/ui/screens/home/home_screen.dart';
@@ -21,7 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       _selectedIndex = index;
     });
   }
-  
+
   static const List<Widget> _screens = [
     HomeScreen(),
     CartScreen(),
@@ -37,18 +38,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           const BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "Home",
-            activeIcon: Icon(Icons.home)
-          ),
+              icon: Icon(Icons.home_outlined),
+              label: "Home",
+              activeIcon: Icon(Icons.home)),
           BottomNavigationBarItem(
             icon: Image.asset(
               "assets/images/img_cart.png",
               height: 24,
               width: 24,
             ),
-            activeIcon: Image.asset(
-              "assets/images/img_filled_cart.png",
+            activeIcon: SvgPicture.asset(
+              "assets/images/ic_cart.svg",
               height: 24,
               width: 24,
             ),
@@ -74,6 +74,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ),
         ],
+        backgroundColor: Colors.white,
         unselectedLabelStyle: GoogleFonts.lato(
           color: Colors.grey,
           fontWeight: FontWeight.bold,
@@ -83,8 +84,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         selectedLabelStyle: GoogleFonts.lato(
           fontWeight: FontWeight.bold,
         ),
-        selectedItemColor: const Color(0xFF101010),
-        unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
