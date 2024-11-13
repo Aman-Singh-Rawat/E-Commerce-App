@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/home/home_body.dart';
 import 'package:shoesy/utils/converters.dart';
@@ -56,7 +57,15 @@ class HomeScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/images/img_heart.png"),
+              icon: SvgPicture.asset(
+                "assets/images/ic_outlined_heart.svg",
+                colorFilter: const ColorFilter.mode(
+                  Color(0xFF101010),
+                  BlendMode.srcIn,
+                ),
+                width: 24,
+                height: 24,
+              ),
             ),
           ],
         ),
