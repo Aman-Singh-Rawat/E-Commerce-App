@@ -4,6 +4,8 @@ import 'package:shoesy/ui/widgets/product_items.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
 import 'package:shoesy/ui/widgets/section_header.dart';
 
+import '../../widgets/product_category.dart';
+
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
@@ -33,10 +35,9 @@ class _HomeBodyState extends State<HomeBody> {
           ),
           const HomeOffer(),
           const SizedBox(height: 20),
-          const SizedBox(height: 20),
           Container(
             margin: const EdgeInsets.only(right: 8),
-            height: 192,
+            height: 195,
             child: const ProductItems(),
           ),
           Padding(
@@ -45,6 +46,11 @@ class _HomeBodyState extends State<HomeBody> {
               sectionTitle: "Most Popular",
               onTextClicked: () {},
             ),
+          ),
+          const SizedBox(height: 12),
+          const SizedBox(
+            height: 40,
+            child: ProductCategory(),
           ),
         ],
       ),

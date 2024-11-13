@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../utils/fill_profile_property.dart';
+import '../../utils/property.dart';
 import '../../utils/profile_enum.dart';
 
 class HomeOffer extends StatefulWidget {

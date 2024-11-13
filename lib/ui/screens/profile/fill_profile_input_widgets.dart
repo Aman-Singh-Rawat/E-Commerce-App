@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/authentication/forgot_password_dialog.dart';
 
 import '../../../utils/converters.dart';
-import '../../../utils/fill_profile_property.dart';
+import '../../../utils/property.dart';
 import '../../../utils/profile_enum.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_textfield.dart';

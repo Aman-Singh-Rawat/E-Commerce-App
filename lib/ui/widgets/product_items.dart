@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoesy/utils/fill_profile_property.dart';
+import 'package:shoesy/utils/property.dart';
 
 import '../../utils/profile_enum.dart';
 
@@ -36,7 +36,7 @@ class ProductItems extends StatelessWidget {
               item[Products.clothes] as String,
               style: GoogleFonts.montserrat(
                 color: const Color(0xFF101010),
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 fontSize: 13,
               ),
             )

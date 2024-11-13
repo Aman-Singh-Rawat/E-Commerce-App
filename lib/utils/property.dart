@@ -82,3 +82,15 @@ List<Map<Products, Object>> productMap = [
     Products.clotheImage: "assets/images/img_toys.png"
   }
 ];
+
+List<String> productCategoryList = [
+  "All",
+  "Clothes",
+  "Shoes",
+  "Bags",
+  "Electronics",
+  "Watch",
+  "Jewelry",
+  "Kitchen",
+  "Toys",
+];
