@@ -21,7 +21,7 @@ class _ProductCategoryState extends State<ProductCategory> {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return Container(
-          margin: const EdgeInsets.only(left: 10, right: 6),
+          margin: const EdgeInsets.only(left: 9, right: 2),
           decoration: BoxDecoration(
             color: _selectedIndex == index ? const Color(0xFF101010) : null,
             borderRadius: BorderRadius.circular(20),

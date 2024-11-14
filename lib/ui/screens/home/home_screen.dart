@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/home/home_body.dart';
+import 'package:shoesy/ui/screens/home/product_screen.dart';
 import 'package:shoesy/utils/converters.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -56,7 +57,15 @@ class HomeScreen extends StatelessWidget {
               icon: SvgPicture.asset("assets/images/ic_outlined_bell_icon.svg"),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const ProductScreen(appBarTitle: "My Wishlist"),
+                  ),
+                );
+              },
               icon: SvgPicture.asset(
                 "assets/images/ic_outlined_heart.svg",
                 colorFilter: const ColorFilter.mode(
