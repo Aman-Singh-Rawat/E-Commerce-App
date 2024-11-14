@@ -17,10 +17,10 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Column(
               children: [
@@ -34,29 +34,48 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
           ),
-          const HomeOffer(),
-          const SizedBox(height: 20),
-          Container(
+        ),
+        const SliverToBoxAdapter(child: HomeOffer()),
+        const SliverToBoxAdapter(child: SizedBox(height: 20)),
+        SliverToBoxAdapter(
+          child: Container(
             margin: const EdgeInsets.only(right: 8),
             height: 195,
-            child: const ProductItems(),
+            child: const ProductItemsType(),
           ),
-          Padding(
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
             padding: const EdgeInsets.all(14),
             child: SectionHeader(
               sectionTitle: "Most Popular",
               onTextClicked: () {},
             ),
           ),
-          const SizedBox(height: 12),
-          const SizedBox(
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
             height: 40,
             child: ProductCategory(),
           ),
-          const SizedBox(height: 12),
-          ProductItem(),
-        ],
-      ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 25),
+          sliver: SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              childAspectRatio: 0.63,
+            ),
+            delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                return const ProductItem();
+              },
+              childCount: 10,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

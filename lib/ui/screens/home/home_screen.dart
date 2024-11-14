@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
             const Spacer(),
             IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/images/img_bell.png"),
+              icon: SvgPicture.asset("assets/images/ic_outlined_bell_icon.svg"),
             ),
             IconButton(
               onPressed: () {},

@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/widgets/product_item_image_section.dart';
 
 class ProductItem extends StatefulWidget {
   const ProductItem({super.key});
@@ -13,39 +13,77 @@ class ProductItem extends StatefulWidget {
 class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: 220,
-          height: 200,
-          decoration: const BoxDecoration(
-            color: Color(0xFFF3F3F3),
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            ),
-          ),
-          child: FadeInImage(
-            placeholder: MemoryImage(kTransparentImage),
-            image: const NetworkImage("assets/images/img_offer_shoe.png"),
-            fit: BoxFit.contain,
-            width: double.infinity,
+        const ProductItemImageSection(),
+        const SizedBox(height: 5),
+        Text(
+          "Suga Leather Shoes",
+          style: GoogleFonts.montserrat(
+            color: const Color(0xFF101010),
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        Positioned(
-          right: 10,
-          top: 10,
-          child: CircleAvatar(
-            radius: 20,
-            backgroundColor: const Color(0xFF101010),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                "assets/images/ic_outlined_heart.svg",
-                theme: SvgTheme(currentColor: Colors.white),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            RatingBar.builder(
+              itemBuilder: (context, _) => const Icon(
+                Icons.star,
+                color: Color(0xFF101010),
+              ),
+              itemSize: 24,
+              itemCount: 1,
+              initialRating: 0.2,
+              allowHalfRating: true,
+              minRating: 1,
+              onRatingUpdate: (rating) {
+                print(rating);
+              },
+            ),
+            Text("4.5", style: GoogleFonts.poppins(
+              color: Colors.grey,
+              fontWeight: FontWeight.w500,
+            ),),
+            Container(
+              height: 20,
+              width: 1.5,
+              color: Colors.grey,
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFFE7E7E7),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
+                child: Text(
+                  "6,937 sold",
+                  style: GoogleFonts.poppins(
+                    color: const Color(0xFF101010),
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
-          ),
+            const SizedBox(width: 10)
+          ],
         ),
+        const SizedBox(height: 5),
+        Text(
+          "₹420.00",
+          style: GoogleFonts.poppins(
+            fontSize: 17,
+            color: const Color(0xFF101010),
+            fontWeight: FontWeight.w600,
+          ),
+        )
       ],
     );
   }

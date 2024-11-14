@@ -20,7 +20,7 @@ get getGreeting {
 
 InputDecoration get textFieldDecoration {
   return InputDecoration(
-    fillColor: const Color(0xFFFAFAFA),
+    fillColor: const Color(0xFFF1F1F1),
     filled: true,
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(

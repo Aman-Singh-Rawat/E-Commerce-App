@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/utils/property.dart';
 
 import '../../utils/profile_enum.dart';
 
-class ProductItems extends StatelessWidget {
-  const ProductItems({super.key});
+class ProductItemsType extends StatelessWidget {
+  const ProductItemsType({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         mainAxisSpacing: 8,
@@ -22,7 +23,7 @@ class ProductItems extends StatelessWidget {
         return Column(
           children: [
             CircleAvatar(
-              backgroundColor: const Color(0xFFE7E7E7),
+              backgroundColor: const Color(0xFFEBEBEB),
               radius: 27,
               child: Padding(
                 padding: const EdgeInsets.all(15),
