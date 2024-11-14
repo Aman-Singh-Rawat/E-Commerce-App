@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoesy/ui/screens/home/product_screen.dart';
 import 'package:shoesy/ui/widgets/home_offer.dart';
 import 'package:shoesy/ui/widgets/product_items_type.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
@@ -49,7 +50,15 @@ class _HomeBodyState extends State<HomeBody> {
             padding: const EdgeInsets.all(14),
             child: SectionHeader(
               sectionTitle: "Most Popular",
-              onTextClicked: () {},
+              onTextClicked: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const ProductScreen(appBarTitle: "Most Popular"),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -68,7 +77,7 @@ class _HomeBodyState extends State<HomeBody> {
               childAspectRatio: 0.63,
             ),
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
+              (BuildContext context, int index) {
                 return const ProductItem();
               },
               childCount: 10,
