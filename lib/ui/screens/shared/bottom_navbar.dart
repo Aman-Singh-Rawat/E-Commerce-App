@@ -42,8 +42,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
               label: "Home",
               activeIcon: Icon(Icons.home)),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              "assets/images/img_cart.png",
+            icon: SvgPicture.asset(
+              "assets/images/ic_outlined_cart.svg",
               height: 24,
               width: 24,
             ),
