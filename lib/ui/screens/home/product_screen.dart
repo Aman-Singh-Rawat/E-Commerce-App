@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/screens/home/search_screen.dart';
 import 'package:shoesy/ui/widgets/product_category.dart';
 import 'package:shoesy/ui/widgets/product_item.dart';
 
@@ -22,7 +23,14 @@ class ProductScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchScreen(),
+                ),
+              );
+            },
             icon: const Icon(Icons.search_rounded),
           )
         ],
