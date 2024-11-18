@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
-import 'package:shoesy/utils/converters.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

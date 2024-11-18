@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shoesy/ui/screens/home/sort_filter_bottom_sheet.dart';
 
 import '../../utils/converters.dart';
 
@@ -23,7 +24,11 @@ class SearchView extends StatelessWidget {
           color: focusNode == null ? Colors.grey : const Color(0xFF101010),
         ),
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            if (focusNode != null) {
+              _showSortFilterBottomSheet(context);
+            }
+          },
           icon: SvgPicture.asset("assets/images/ic_filter.svg"),
         ),
         focusedBorder: focusNode != null
@@ -36,6 +41,14 @@ class SearchView extends StatelessWidget {
               )
             : null,
       ),
+    );
+  }
+
+  void _showSortFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      builder: (context) => const SortFilterBottomSheet(),
     );
   }
 }
