@@ -48,6 +48,7 @@ class SearchView extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       showDragHandle: true,
+      isScrollControlled: true,
       builder: (context) => const SortFilterBottomSheet(),
     );
   }

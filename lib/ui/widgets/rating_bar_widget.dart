@@ -17,7 +17,7 @@ class _RatingBarWidgetState extends State<RatingBarWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: productCategoryList.length,
+      itemCount: list.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return Container(
@@ -52,12 +52,12 @@ class _RatingBarWidgetState extends State<RatingBarWidget> {
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    productCategoryList[index],
-                    style: GoogleFonts.poppins(
+                    list[index],
+                    style: GoogleFonts.montserrat(
                       color: _selectedIndex == index
                           ? Colors.white
                           : const Color(0xFF101010),
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],

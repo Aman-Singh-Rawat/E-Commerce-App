@@ -7,13 +7,13 @@ class CustomButton extends StatefulWidget {
     required this.onPressedCallback,
     required this.btnText,
     required this.btnColor,
-    required this.btnElevation,
+    this.btnElevation,
   });
 
   final VoidCallback onPressedCallback;
   final String btnText;
   final Color btnColor;
-  final double btnElevation;
+  final double? btnElevation;
 
   @override
   State<CustomButton> createState() => _CustomButton();
@@ -32,9 +32,11 @@ class _CustomButton extends State<CustomButton> {
         padding: const EdgeInsets.symmetric(vertical: 16),
         child: Text(
           widget.btnText,
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
+          style: GoogleFonts.montserrat(
+            fontWeight: FontWeight.w600,
+            color: (widget.btnColor == const Color(0xFFE7E7E7))
+                ? const Color(0xFF101010)
+                : Colors.white,
             fontSize: 16,
           ),
         ),
