@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoesy/ui/screens/home/product_screen.dart';
 import 'package:shoesy/ui/screens/home/search_screen.dart';
+import 'package:shoesy/ui/screens/home/special_offer_screen.dart';
 import 'package:shoesy/ui/widgets/home_offer.dart';
 import 'package:shoesy/ui/widgets/product_items_type.dart';
 import 'package:shoesy/ui/widgets/search_view.dart';
@@ -37,7 +38,14 @@ class _HomeBodyState extends State<HomeBody> {
                 const SizedBox(height: 20),
                 SectionHeader(
                   sectionTitle: "Special Offers",
-                  onTextClicked: () {},
+                  onTextClicked: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SpecialOfferScreen(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
               ],
