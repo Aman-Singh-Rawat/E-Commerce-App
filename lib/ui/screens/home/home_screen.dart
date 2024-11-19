@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/screens/home/home_body.dart';
+import 'package:shoesy/ui/screens/home/notification_screen.dart';
 import 'package:shoesy/ui/screens/home/product_screen.dart';
 import 'package:shoesy/utils/converters.dart';
 
@@ -53,7 +54,13 @@ class HomeScreen extends StatelessWidget {
             ),
             const Spacer(),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NotificationScreen(),
+                    ));
+              },
               icon: SvgPicture.asset("assets/images/ic_outlined_bell_icon.svg"),
             ),
             IconButton(
