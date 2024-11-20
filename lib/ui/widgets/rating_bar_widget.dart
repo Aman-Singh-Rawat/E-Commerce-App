@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../utils/property.dart';
 
 class RatingBarWidget extends StatefulWidget {
   const RatingBarWidget({super.key});

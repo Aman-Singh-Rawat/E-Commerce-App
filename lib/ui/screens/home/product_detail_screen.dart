@@ -1,14 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/widgets/quantity_of_sold_item.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
   ProductDetailScreen({super.key});
 
+  @override
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final List<String> sizeList = ["S", "M", "L"];
+
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -109,10 +115,11 @@ class ProductDetailScreen extends StatelessWidget {
                     fontSize: 13,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 15),
                 Row(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Size",
@@ -122,7 +129,50 @@ class ProductDetailScreen extends StatelessWidget {
                             fontSize: 18,
                           ),
                         ),
-
+                        const SizedBox(height: 10),
+                        Row(
+                          children: List.generate(
+                            3,
+                            (index) {
+                              return Container(
+                                margin: const EdgeInsets.only(right: 12),
+                                width: 44,
+                                height: 44,
+                                decoration: BoxDecoration(
+                                  color: _selectedIndex == index
+                                      ? const Color(0xFF101010)
+                                      : null,
+                                  border: _selectedIndex != index
+                                      ? Border.all(
+                                          color: const Color(0xFF7A7A7A),
+                                          width: 2,
+                                        )
+                                      : null,
+                                  borderRadius: BorderRadius.circular(44),
+                                ),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(44),
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedIndex = index;
+                                    });
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      sizeList[index],
+                                      style: GoogleFonts.montserrat(
+                                        color: _selectedIndex == index
+                                            ? Colors.white
+                                            : const Color(0xFF7A7A7A),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
                       ],
                     )
                   ],
