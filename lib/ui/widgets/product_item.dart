@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/widgets/product_item_image_section.dart';
+import 'package:shoesy/ui/widgets/quantity_of_sold_item.dart';
 
 class ProductItem extends StatefulWidget {
   const ProductItem({super.key});
@@ -28,7 +29,6 @@ class _ProductItemState extends State<ProductItem> {
         ),
         const SizedBox(height: 5),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             RatingBar.builder(
               itemBuilder: (context, _) => const Icon(
@@ -44,34 +44,22 @@ class _ProductItemState extends State<ProductItem> {
                 print(rating);
               },
             ),
-            Text("4.5", style: GoogleFonts.poppins(
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
-            ),),
+            const SizedBox(width: 6),
+            Text(
+              "4.5",
+              style: GoogleFonts.poppins(
+                color: Colors.grey,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(width: 11),
             Container(
               height: 20,
               width: 1.5,
               color: Colors.grey,
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: Color(0xFFE7E7E7),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
-                child: Text(
-                  "6,937 sold",
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFF101010),
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
+            const SizedBox(width: 11),
+            const QuantityOfSoldItem(),
             const SizedBox(width: 10)
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoesy/ui/screens/home/product_detail_screen.dart';
 import 'package:shoesy/ui/screens/shared/bottom_navbar.dart';
 
 void main() => runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => const BottomNavBar(),
+        "/": (context) => ProductDetailScreen(),
         "/bottomNavBar": (context) => const BottomNavBar(),
       },
     );
