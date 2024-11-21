@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuantityIncreaseDecrease extends StatefulWidget {
@@ -36,8 +37,8 @@ class _QuantityIncreaseDecreaseState extends State<QuantityIncreaseDecrease> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
+              TextButton(
+                onPressed: () {
                   setState(() {
                     if (_count != 0) {
                       _count--;
@@ -54,16 +55,19 @@ class _QuantityIncreaseDecreaseState extends State<QuantityIncreaseDecrease> {
                   ),
                 ),
               ),
-              Text(
-                "$_count",
-                style: GoogleFonts.poppins(
-                  color: const Color(0xFF101010),
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
+              Container(
+                margin: const EdgeInsets.only(top: 5),
+                child: Text(
+                  "$_count",
+                  style: GoogleFonts.poppins(
+                    color: const Color(0xFF101010),
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
+              TextButton(
+                onPressed: () {
                   setState(() {
                     _count++;
                   });

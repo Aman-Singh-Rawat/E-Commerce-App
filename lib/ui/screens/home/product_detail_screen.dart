@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/widgets/custom_button.dart';
 import 'package:shoesy/ui/widgets/product_detail_color.dart';
 import 'package:shoesy/ui/widgets/product_detail_size.dart';
 import 'package:shoesy/ui/widgets/quantity_increase_decrease.dart';
@@ -123,6 +124,73 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const QuantityIncreaseDecrease(),
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 1,
+                    width: double.infinity,
+                    color: const Color(0xFFEBEBEB),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 130,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Total price",
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "₹320.000",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                color: const Color(0xFF101010),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 24),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF101010),
+                            elevation: 0,
+                          ),
+                          onPressed: () {},
+                          child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.shopping_bag_rounded,
+                                    color: Colors.white,
+                                  ),
+                                  const SizedBox(width: 15),
+                                  Text(
+                                    "Add to Cart",
+                                    style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             )
