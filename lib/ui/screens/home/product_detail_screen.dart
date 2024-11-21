@@ -2,27 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/widgets/product_detail_color.dart';
+import 'package:shoesy/ui/widgets/product_detail_size.dart';
+import 'package:shoesy/ui/widgets/quantity_increase_decrease.dart';
 import 'package:shoesy/ui/widgets/quantity_of_sold_item.dart';
 
-class ProductDetailScreen extends StatefulWidget {
+class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
-
-  @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
-}
-
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  final List<String> sizeList = ["S", "M", "L"];
-  final List<Color> productColor = [
-    Colors.pink,
-    Colors.deepPurple,
-    Colors.blue,
-    Colors.cyan
-  ];
-
-  int _selectedIndex = 1;
-  int _colorSelectedIndex = 0;
-  int _count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -125,115 +111,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  SingleChildScrollView(
+                  const SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Size",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              children: List.generate(
-                                3,
-                                (index) {
-                                  return Container(
-                                    margin: const EdgeInsets.only(right: 12),
-                                    width: 44,
-                                    height: 44,
-                                    decoration: BoxDecoration(
-                                      color: _selectedIndex == index
-                                          ? const Color(0xFF101010)
-                                          : null,
-                                      border: _selectedIndex != index
-                                          ? Border.all(
-                                              color: const Color(0xFF7A7A7A),
-                                              width: 2,
-                                            )
-                                          : null,
-                                      borderRadius: BorderRadius.circular(44),
-                                    ),
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(44),
-                                      onTap: () {
-                                        setState(() {
-                                          _selectedIndex = index;
-                                        });
-                                      },
-                                      child: Center(
-                                        child: Text(
-                                          sizeList[index],
-                                          style: GoogleFonts.montserrat(
-                                            color: _selectedIndex == index
-                                                ? Colors.white
-                                                : const Color(0xFF7A7A7A),
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(width: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Color",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              children: List.generate(
-                                productColor.length,
-                                (index) {
-                                  return Container(
-                                    margin: const EdgeInsets.only(right: 12),
-                                    width: 44,
-                                    height: 44,
-                                    decoration: BoxDecoration(
-                                        color: productColor[index],
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(44))),
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(44),
-                                      onTap: () {
-                                        setState(() {
-                                          _colorSelectedIndex = index;
-                                        });
-                                      },
-                                      child: Center(
-                                        child: _colorSelectedIndex == index
-                                            ? SvgPicture.asset(
-                                                "assets/images/ic_correct.svg",
-                                                width: 30,
-                                                height: 30,
-                                              )
-                                            : null,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
+                        ProductDetailSize(),
+                        SizedBox(width: 15),
+                        ProductDetailColor(),
                       ],
                     ),
                   ),
@@ -249,47 +133,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      Container(
-                        width: 185,
-                        height: 68,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFF3F3F3),
-                            borderRadius: BorderRadius.circular(40)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "-",
-                                style: GoogleFonts.poppins(
-                                  color: const Color(0xFF101010),
-                                  fontSize: 35,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              "$_count",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "+",
-                                style: GoogleFonts.poppins(
-                                  color: const Color(0xFF101010),
-                                  fontSize: 35,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                      const QuantityIncreaseDecrease(),
                     ],
                   )
                 ],
