@@ -122,20 +122,7 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Text(
-                        "Quantity",
-                        style: GoogleFonts.poppins(
-                          color: const Color(0xFF101010),
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      const QuantityIncreaseDecrease(),
-                    ],
-                  )
+                  const QuantityIncreaseDecrease(),
                 ],
               ),
             )
