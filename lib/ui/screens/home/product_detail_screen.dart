@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shoesy/ui/widgets/quantity_of_sold_item.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  ProductDetailScreen({super.key});
+  const ProductDetailScreen({super.key});
 
   @override
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
@@ -13,174 +13,290 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final List<String> sizeList = ["S", "M", "L"];
+  final List<Color> productColor = [
+    Colors.pink,
+    Colors.deepPurple,
+    Colors.blue,
+    Colors.cyan
+  ];
 
   int _selectedIndex = 1;
+  int _colorSelectedIndex = 0;
+  int _count = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Image.asset(
-            "assets/images/img_offer_girl.png",
-            width: double.infinity,
-            height: 400,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Venesa Long Shirt",
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF101010),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        "assets/images/ic_outlined_heart.svg",
-                        colorFilter: const ColorFilter.mode(
-                          Color(0xFF101010),
-                          BlendMode.srcIn,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              "assets/images/img_offer_girl.png",
+              width: double.infinity,
+              height: 400,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Venesa Long Shirt",
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF101010),
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
                         ),
-                        width: 24,
-                        height: 24,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const QuantityOfSoldItem(),
-                    const SizedBox(width: 15),
-                    RatingBar.builder(
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Color(0xFF101010),
-                      ),
-                      itemSize: 24,
-                      itemCount: 1,
-                      initialRating: 0.2,
-                      allowHalfRating: true,
-                      minRating: 1,
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      "4.8 (4,749 reviews)",
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF101010),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 1,
-                  width: double.infinity,
-                  color: const Color(0xFFEBEBEB),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  "Description",
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFF101010),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum tempor urna, vitae laoreet ipsum sodales et.",
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFF101010),
-                    fontSize: 13,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Size",
-                          style: GoogleFonts.poppins(
-                            color: const Color(0xFF101010),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          "assets/images/ic_outlined_heart.svg",
+                          colorFilter: const ColorFilter.mode(
+                            Color(0xFF101010),
+                            BlendMode.srcIn,
                           ),
+                          width: 24,
+                          height: 24,
                         ),
-                        const SizedBox(height: 10),
-                        Row(
-                          children: List.generate(
-                            3,
-                            (index) {
-                              return Container(
-                                margin: const EdgeInsets.only(right: 12),
-                                width: 44,
-                                height: 44,
-                                decoration: BoxDecoration(
-                                  color: _selectedIndex == index
-                                      ? const Color(0xFF101010)
-                                      : null,
-                                  border: _selectedIndex != index
-                                      ? Border.all(
-                                          color: const Color(0xFF7A7A7A),
-                                          width: 2,
-                                        )
-                                      : null,
-                                  borderRadius: BorderRadius.circular(44),
-                                ),
-                                child: InkWell(
-                                  borderRadius: BorderRadius.circular(44),
-                                  onTap: () {
-                                    setState(() {
-                                      _selectedIndex = index;
-                                    });
-                                  },
-                                  child: Center(
-                                    child: Text(
-                                      sizeList[index],
-                                      style: GoogleFonts.montserrat(
-                                        color: _selectedIndex == index
-                                            ? Colors.white
-                                            : const Color(0xFF7A7A7A),
-                                        fontWeight: FontWeight.w600,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const QuantityOfSoldItem(),
+                      const SizedBox(width: 15),
+                      RatingBar.builder(
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Color(0xFF101010),
+                        ),
+                        itemSize: 24,
+                        itemCount: 1,
+                        initialRating: 0.2,
+                        allowHalfRating: true,
+                        minRating: 1,
+                        onRatingUpdate: (rating) {
+                          print(rating);
+                        },
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "4.8 (4,749 reviews)",
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF101010),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 1,
+                    width: double.infinity,
+                    color: const Color(0xFFEBEBEB),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "Description",
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF101010),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum tempor urna, vitae laoreet ipsum sodales et.",
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF101010),
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Size",
+                              style: GoogleFonts.poppins(
+                                color: const Color(0xFF101010),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: List.generate(
+                                3,
+                                (index) {
+                                  return Container(
+                                    margin: const EdgeInsets.only(right: 12),
+                                    width: 44,
+                                    height: 44,
+                                    decoration: BoxDecoration(
+                                      color: _selectedIndex == index
+                                          ? const Color(0xFF101010)
+                                          : null,
+                                      border: _selectedIndex != index
+                                          ? Border.all(
+                                              color: const Color(0xFF7A7A7A),
+                                              width: 2,
+                                            )
+                                          : null,
+                                      borderRadius: BorderRadius.circular(44),
+                                    ),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(44),
+                                      onTap: () {
+                                        setState(() {
+                                          _selectedIndex = index;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          sizeList[index],
+                                          style: GoogleFonts.montserrat(
+                                            color: _selectedIndex == index
+                                                ? Colors.white
+                                                : const Color(0xFF7A7A7A),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        )
+                                  );
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(width: 15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Color",
+                              style: GoogleFonts.poppins(
+                                color: const Color(0xFF101010),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: List.generate(
+                                productColor.length,
+                                (index) {
+                                  return Container(
+                                    margin: const EdgeInsets.only(right: 12),
+                                    width: 44,
+                                    height: 44,
+                                    decoration: BoxDecoration(
+                                        color: productColor[index],
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(44))),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(44),
+                                      onTap: () {
+                                        setState(() {
+                                          _colorSelectedIndex = index;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: _colorSelectedIndex == index
+                                            ? SvgPicture.asset(
+                                                "assets/images/ic_correct.svg",
+                                                width: 30,
+                                                height: 30,
+                                              )
+                                            : null,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          ],
+                        ),
                       ],
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Text(
+                        "Quantity",
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF101010),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Container(
+                        width: 185,
+                        height: 68,
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFF3F3F3),
+                            borderRadius: BorderRadius.circular(40)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "-",
+                                style: GoogleFonts.poppins(
+                                  color: const Color(0xFF101010),
+                                  fontSize: 35,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "$_count",
+                              style: GoogleFonts.poppins(
+                                color: const Color(0xFF101010),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "+",
+                                style: GoogleFonts.poppins(
+                                  color: const Color(0xFF101010),
+                                  fontSize: 35,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

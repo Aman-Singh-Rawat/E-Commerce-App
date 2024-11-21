@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => ProductDetailScreen(),
+        "/": (context) => const ProductDetailScreen(),
         "/bottomNavBar": (context) => const BottomNavBar(),
       },
     );
