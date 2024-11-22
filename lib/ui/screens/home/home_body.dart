@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoesy/ui/screens/home/product_detail_screen.dart';
 import 'package:shoesy/ui/screens/home/product_screen.dart';
 import 'package:shoesy/ui/screens/home/search_screen.dart';
 import 'package:shoesy/ui/screens/home/special_offer_screen.dart';
@@ -94,7 +95,17 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return const ProductItem();
+                return GestureDetector(
+                  child: const ProductItem(),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProductDetailScreen(),
+                      ),
+                    );
+                  },
+                );
               },
               childCount: 10,
             ),

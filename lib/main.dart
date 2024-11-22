@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shoesy/ui/screens/home/home_screen.dart';
 import 'package:shoesy/ui/screens/home/product_detail_screen.dart';
 import 'package:shoesy/ui/screens/home/review_screen.dart';
 import 'package:shoesy/ui/screens/shared/bottom_navbar.dart';
+import 'package:shoesy/ui/screens/splash/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => const ReviewScreen(),
+        "/": (context) => const HomeScreen(),
         "/bottomNavBar": (context) => const BottomNavBar(),
       },
     );

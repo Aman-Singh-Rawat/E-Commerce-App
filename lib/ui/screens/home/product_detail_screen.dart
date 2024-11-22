@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shoesy/ui/screens/home/review_screen.dart';
 import 'package:shoesy/ui/widgets/product_detail_color.dart';
 import 'package:shoesy/ui/widgets/product_detail_screen_img.dart';
 import 'package:shoesy/ui/widgets/product_detail_size.dart';
@@ -29,7 +30,9 @@ class ProductDetailScreen extends StatelessWidget {
                         top: 45,
                         left: 14,
                         child: IconButton(
-                          onPressed: () { Navigator.pop(context); },
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           icon: const Icon(
                             CupertinoIcons.arrow_left,
                             size: 28,
@@ -77,35 +80,45 @@ class ProductDetailScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 5),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const QuantityOfSoldItem(),
-                            const SizedBox(width: 15),
-                            RatingBar.builder(
-                              itemBuilder: (context, _) => const Icon(
-                                Icons.star,
-                                color: Color(0xFF101010),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ReviewScreen(),
                               ),
-                              itemSize: 24,
-                              itemCount: 1,
-                              initialRating: 0.2,
-                              allowHalfRating: true,
-                              minRating: 1,
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "4.8 (4,749 reviews)",
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF101010),
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
+                            );
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const QuantityOfSoldItem(),
+                              const SizedBox(width: 15),
+                              RatingBar.builder(
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Color(0xFF101010),
+                                ),
+                                itemSize: 24,
+                                itemCount: 1,
+                                initialRating: 0.2,
+                                allowHalfRating: true,
+                                minRating: 1,
+                                onRatingUpdate: (rating) {
+                                  print(rating);
+                                },
                               ),
-                            ),
-                          ],
+                              const SizedBox(width: 10),
+                              Text(
+                                "4.8 (4,749 reviews)",
+                                style: GoogleFonts.poppins(
+                                  color: const Color(0xFF101010),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 20),
                         Container(
