@@ -33,18 +33,18 @@ class _ProductDetailColorState extends State<ProductDetailColor> {
           style: GoogleFonts.poppins(
             color: const Color(0xFF101010),
             fontWeight: FontWeight.w600,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Row(
           children: List.generate(
             productColor.length,
                 (index) {
               return Container(
-                margin: const EdgeInsets.only(right: 12),
-                width: 44,
-                height: 44,
+                margin: const EdgeInsets.only(right: 8),
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: productColor[index],
                   borderRadius: const BorderRadius.all(

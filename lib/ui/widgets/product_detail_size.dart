@@ -10,7 +10,7 @@ class ProductDetailSize extends StatefulWidget {
 }
 
 class _ProductDetailSizeState extends State<ProductDetailSize> {
-  final List<String> sizeList = ["S", "M", "L"];
+  final List<String> sizeList = ["140", "M", "L"];
   int _selectedIndex = 1;
 
   @override
@@ -23,18 +23,18 @@ class _ProductDetailSizeState extends State<ProductDetailSize> {
           style: GoogleFonts.poppins(
             color: const Color(0xFF101010),
             fontWeight: FontWeight.w600,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Row(
           children: List.generate(
             3,
                 (index) {
               return Container(
-                margin: const EdgeInsets.only(right: 12),
-                width: 44,
-                height: 44,
+                margin: const EdgeInsets.only(right: 8),
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: _selectedIndex == index
                       ? const Color(0xFF101010)

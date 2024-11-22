@@ -22,7 +22,7 @@ class _QuantityIncreaseDecreaseState extends State<QuantityIncreaseDecrease> {
           style: GoogleFonts.poppins(
             color: const Color(0xFF101010),
             fontWeight: FontWeight.w600,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
         const SizedBox(width: 20),
